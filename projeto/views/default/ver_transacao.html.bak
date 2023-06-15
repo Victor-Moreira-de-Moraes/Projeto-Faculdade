@@ -1,0 +1,33 @@
+{{extend 'layout.html'}}
+
+<h1>Ver Transações</h1>
+
+<form action="" method="post" class="pull-right">
+  <input name="transacao" placeholder="Pesquisar" />
+  <input type="submit" value="Pesquisar" />
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Tipo</th>
+      <th>Conta</th>
+      <th>Nome</th>
+      <th>Resumo</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{for transacao in transacao:}}
+    <tr>
+      <td>{{=transacao.data_transacao}}</td>
+      <td>{{=transacao.tipo}}</td>
+      <td>{{=transacao.tipo_conta}}</td>
+      <td>{{=transacao.nome_transacao}}</td>
+      <td>{{=transacao.resumo}}</td>
+      <td>{{=transacao.valor}}</td>
+    </tr>
+    {{pass}}
+  </tbody>
+</table>

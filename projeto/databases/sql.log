@@ -1,0 +1,76 @@
+timestamp: 2023-06-10T19:41:10.491117
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(128),
+    "last_name" CHAR(128),
+    "email" CHAR(512),
+    "password" CHAR(512),
+    "registration_key" CHAR(512),
+    "reset_password_key" CHAR(512),
+    "registration_id" CHAR(512)
+);
+success!
+timestamp: 2023-06-10T19:41:10.931865
+CREATE TABLE "auth_group"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "role" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2023-06-10T19:41:11.101767
+CREATE TABLE "auth_membership"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2023-06-10T19:41:11.268672
+CREATE TABLE "auth_permission"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
+    "name" CHAR(512),
+    "table_name" CHAR(512),
+    "record_id" INTEGER
+);
+success!
+timestamp: 2023-06-10T19:41:11.369615
+CREATE TABLE "auth_event"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "time_stamp" TIMESTAMP,
+    "client_ip" CHAR(512),
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "origin" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2023-06-10T19:41:11.590490
+CREATE TABLE "auth_cas"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "created_on" TIMESTAMP,
+    "service" CHAR(512),
+    "ticket" CHAR(512),
+    "renew" CHAR(1)
+);
+success!
+timestamp: 2023-06-10T19:45:01.614893
+CREATE TABLE "conta"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nome_conta" CHAR(512),
+    "saldo" INTEGER
+);
+success!
+timestamp: 2023-06-10T19:45:01.853197
+CREATE TABLE "transacao"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "data_transacao" DATE,
+    "tipo" TEXT,
+    "tipo_conta" CHAR(512),
+    "nome_transacao" CHAR(512),
+    "resumo" CHAR(512),
+    "valor" DOUBLE
+);
+success!
+timestamp: 2023-06-11T16:03:36.678251
+ALTER TABLE "transacao" ADD "auth_user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ;
+success!

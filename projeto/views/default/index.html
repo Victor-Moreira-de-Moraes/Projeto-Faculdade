@@ -1,0 +1,48 @@
+{{extend 'layout.html'}}
+<link rel="stylesheet" type="text/css" href="{{=URL('static', 'css/custom.css')}}" />
+<style>
+    body {
+        background-image: url("/projeto/static/images/foto5-m.jpg");
+        /* Substitua "/yourprojectname" pelo caminho correto para o seu projeto web2py */
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    p{
+        color: white;
+    }
+</style>
+
+<div class="row">
+  <div class="col-md-12">
+    {{if 'message' in globals():}}
+      <h1>Porque Utilizar um Sistema Financeiro?</h1>
+      <p>
+          O gerenciamento adequado das finanças pessoais é essencial para o bem-estar financeiro de qualquer indivíduo é a forma mais básica de cuidar do seu dinheiro. É assim que você conhece não só a sua renda, mas os seus gastos e o que pode ser melhorado para sobrar mais dinheiro no fim do mês.
+      </p>
+      <p>
+No entanto, muitas pessoas enfrentam problemas ao tentar controlar efetivamente suas receitas, despesas, orçamento e metas financeiras, deixando-as sem saber quando podem ou não se darem ao luxo de gastar em coisas de não tão alta prioridade. A falta de organização financeira pode levar a gastos excessivos, dívida e outros problemas financeiros.
+     </p>
+      <p>
+Para resolver esse problema, um sistema de finanças pessoais pode ser desenvolvido para ajudar as pessoas a administrarem suas finanças de maneira mais eficaz. O sistema pode fornecer uma visão abrangente das finanças pessoais, permitindo o controle sobre receitas, despesas, orçamento, investimentos, dívidas e metas financeiras.
+      </p>
+      <p>
+    tação de um sistema financeiro pessoal pode ser uma ferramenta valiosa para ajudar as pessoas a entender melhor suas finanças, diminuir seus gastos, economizar dinheiro e atingir suas metas financeiras de curto, médio e longo prazo, deixando as pessoas mais cientes do que está acontecendo na vida financeira delas.
+      </p>
+
+
+      <div class="container center">
+        <a class="btn btn-primary" href="{{=URL('admin','default','index')}}">
+          <i class="fa fa-cog"></i>
+          {{=T("admin")}}
+        </a>
+        <a class="btn btn-secondary" href="{{=URL('default','ver_transacao')}}">{{=T('Ver transações')}}</a>
+        <a class="btn btn-secondary" href="{{=URL('default','nova_transacao')}}">{{=T('Nova Transação')}}</a>
+      </div>
+    </div>
+    {{elif 'content' in globals():}}
+    {{=content}}
+    {{else:}}
+    {{=BEAUTIFY(response._vars)}}
+    {{pass}}
+  </div>
+</div>

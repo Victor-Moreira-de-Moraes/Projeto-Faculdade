@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+# this file is released under public domain and you can use without limitations
+
+# ----------------------------------------------------------------------------------------------------------------------
+# this is the main application menu add/remove items as required
+# ----------------------------------------------------------------------------------------------------------------------
+
+response.menu += [
+    (T('Home'), False, URL('default', 'index')),
+    (T('Nova Transações'), False, URL('default', 'nova_transacao')),
+    (T('Ver Transações'), False, URL('default', 'ver_transacao')),
+    (T('Apagar Transações'), False, URL('default', 'apagar_transacao')),
+    (T('Editar Transações'), False, URL('default', 'editar_transacao'))
+]
